@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelWorld - Payment</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <style>
+        .site-footer {
+  background-color: #1e1e2f; /* Dark background */
+  color: #f1f1f1; /* Light text */
+  padding: 40px 20px;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border-top: 4px solid #4CAF50;
+}
+
+.site-footer .footer-content {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.site-footer p {
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: #dcdcdc;
+}
+
+.site-footer .footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.site-footer .footer-links li a {
+  color: #b5e853;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.site-footer .footer-links li a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+.payment-container {
+  max-width: 1200px;
+  margin: 120px auto 60px;
+  padding: 20px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Booking Steps */
+.booking-steps {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.step {
+  text-align: center;
+  flex: 1;
+}
+
+.step-number {
+  width: 40px;
+  height: 40px;
+  background-color: #4CAF50;
+  color: white;
+  font-weight: bold;
+  border-radius: 50%;
+  margin: auto;
+  line-height: 40px;
+  font-size: 16px;
+}
+
+.step-title {
+  margin-top: 10px;
+  color: #333;
+  font-size: 14px;
+}
+
+.step.active .step-number {
+  background-color: #1e7e34;
+  box-shadow: 0 0 10px rgba(0,0,0,0.15);
+}
+
+.step.completed .step-number {
+  background-color: #28a745;
+}
+
+/* Payment Content */
+.payment-content {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.payment-summary, .payment-form {
+  flex: 1;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 30px;
+}
+
+/* Summary Card */
+.summary-card {
+  margin-bottom: 20px;
+}
+
+.summary-header h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.package-price {
+  font-size: 22px;
+  font-weight: bold;
+  color: #4CAF50;
+}
+
+.summary-details p {
+  margin: 8px 0;
+  color: #555;
+}
+
+.summary-details i {
+  margin-right: 8px;
+  color: #4CAF50;
+}
+
+/* Price Breakdown */
+.price-breakdown h3 {
+  margin-bottom: 15px;
+  font-size: 18px;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 8px;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  margin: 8px 0;
+}
+
+.price-row.total {
+  font-weight: bold;
+  font-size: 17px;
+}
+
+/* Payment Method Buttons */
+.payment-methods {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.payment-method {
+  flex: 1;
+  min-width: 140px;
+  background: #f7f7f7;
+  padding: 15px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.payment-method.active {
+  border-color: #4CAF50;
+  background-color: #e8f5e9;
+}
+
+.payment-method i {
+  font-size: 20px;
+  margin-bottom: 6px;
+  color: #4CAF50;
+}
+
+/* Forms */
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* Icons inside inputs */
+.form-group i.fab, .form-group i.fas {
+  font-size: 18px;
+  margin-left: 8px;
+  color: #888;
+}
+
+/* PayPal & Bank Styles */
+.paypal-btn {
+  background-color: #003087;
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.bank-details p {
+  margin: 8px 0;
+  color: #444;
+}
+
+.note {
+  margin-top: 10px;
+  color: #888;
+  font-size: 14px;
+}
+
+/* Terms Agreement */
+.terms-agreement {
+  margin: 20px 0;
+  font-size: 14px;
+}
+
+.terms-agreement label a {
+  color: #4CAF50;
+  text-decoration: none;
+}
+
+.terms-agreement label a:hover {
+  text-decoration: underline;
+}
+
+/* Form Actions */
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.btn-confirm, .btn-back {
+  padding: 12px 25px;
+  font-size: 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-confirm {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.btn-confirm:hover {
+  background-color: #388e3c;
+}
+
+.btn-back {
+  background-color: #e0e0e0;
+}
+
+.btn-back:hover {
+  background-color: #ccc;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .payment-content {
+    flex-direction: column;
+  }
+
+  .form-row {
+    flex-direction: column;
+  }
+
+  .payment-methods {
+    flex-direction: column;
+  }
+}
+.payment-method, .btn-confirm, .btn-back {
+  transition: all 0.3s ease-in-out;
+}
+</style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="scrolling-nav">
+        <div class="nav-container">
+            <div class="logo">TravelWorld</div>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="destinations.html">Destinations</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+               
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="index.html" class="dashboard-btn"><i class="fas fa-user-circle"></i> Dashboard</a></li>
+            </ul>
+            <div class="search-box">
+                <input type="text" placeholder="Search destinations...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <main class="payment-container">
+        <div class="booking-steps">
+            <div class="step completed">
+                <div class="step-number">1</div>
+                <div class="step-title">Package Details</div>
+            </div>
+            <div class="step completed">
+                <div class="step-number">2</div>
+                <div class="step-title">Traveler Info</div>
+            </div>
+            <div class="step active">
+                <div class="step-number">3</div>
+                <div class="step-title">Payment</div>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-title">Confirmation</div>
+            </div>
+        </div>
+
+        <div class="payment-content">
+            <div class="payment-summary">
+                <h2>Booking Summary</h2>
+                <div class="summary-card">
+                    <div class="summary-header">
+                        <h3 id="summary-package-name">Paris Explorer</h3>
+                        <div class="package-price" id="summary-package-price">$1,299 <span>/person</span></div>
+                    </div>
+                    <div class="summary-details">
+                        <p><i class="fas fa-map-marker-alt"></i> <span id="summary-destination">Paris, France</span></p>
+                        <p><i class="fas fa-clock"></i> <span id="summary-duration">5 Days / 4 Nights</span></p>
+                        <p><i class="fas fa-calendar-alt"></i> <span id="summary-dates">June 15 - June 20, 2023</span></p>
+                        <p><i class="fas fa-user-friends"></i> <span id="summary-travelers">2 Adults</span></p>
+                    </div>
+                </div>
+                
+                <div class="price-breakdown">
+                    <h3>Price Breakdown</h3>
+                    <div class="price-row">
+                        <span>Package Price (x2)</span>
+                        <span>$2,598.00</span>
+                    </div>
+                    <div class="price-row">
+                        <span>Taxes & Fees</span>
+                        <span>$129.90</span>
+                    </div>
+                    <div class="price-row">
+                        <span>Travel Insurance</span>
+                        <span>$99.00</span>
+                    </div>
+                    <div class="price-row total">
+                        <span>Total Amount</span>
+                        <span>$2,826.90</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="payment-form">
+                <h2>Payment Method</h2>
+                <form id="paymentForm">
+                    <div class="payment-methods">
+                        <div class="payment-method active" data-method="credit">
+                            <i class="far fa-credit-card"></i>
+                            <span>Credit/Debit Card</span>
+                        </div>
+                        <div class="payment-method" data-method="paypal">
+                            <i class="fab fa-paypal"></i>
+                            <span>PayPal</span>
+                        </div>
+                        <div class="payment-method" data-method="bank">
+                            <i class="fas fa-university"></i>
+                            <span>Bank Transfer</span>
+                        </div>
+                    </div>
+                    
+                    <div class="credit-card-form active" id="creditCardForm">
+                        <div class="form-group">
+                            <label for="cardNumber">Card Number</label>
+                            <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" required>
+                            <i class="fab fa-cc-visa"></i>
+                            <i class="fab fa-cc-mastercard"></i>
+                            <i class="fab fa-cc-amex"></i>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="cardName">Name on Card</label>
+                            <input type="text" id="cardName" required>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="expiryDate">Expiry Date</label>
+                                <input type="text" id="expiryDate" placeholder="MM/YY" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="cvv">CVV</label>
+                                <input type="text" id="cvv" placeholder="123" required>
+                                <i class="fas fa-question-circle" title="3-digit code on back of card"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="paypal-form" id="paypalForm" style="display: none;">
+                        <p>You will be redirected to PayPal to complete your payment</p>
+                        <button type="button" class="paypal-btn">
+                            <i class="fab fa-paypal"></i> Pay with PayPal
+                        </button>
+                    </div>
+                    
+                    <div class="bank-form" id="bankForm" style="display: none;">
+                        <div class="bank-details">
+                            <p><strong>Account Name:</strong> TravelWorld Tours</p>
+                            <p><strong>Bank Name:</strong> Global International Bank</p>
+                            <p><strong>Account Number:</strong> 1234567890</p>
+                            <p><strong>SWIFT Code:</strong> GLBINTL123</p>
+                            <p><strong>Reference:</strong> Your booking ID</p>
+                        </div>
+                        <p class="note">Please send us the payment receipt after transfer</p>
+                    </div>
+                    
+                    <div class="terms-agreement">
+                        <input type="checkbox" id="agreeTerms" required>
+                        <label for="agreeTerms">I agree to the <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a></label>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn-back">Back</button>
+                        <button type="submit" class="btn-confirm">Confirm</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>&copy; 2025 TravelWorld. All Rights Reserved.</p>
+            <ul class="footer-links">
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Use</a></li>
+                <li><a href="#">Help Center</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/payment.js"></script>
+</body>
+</html>

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelWorld - Book Your Trip</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <style>
+        /* Booking Page Enhancements */
+
+.booking-container {
+  max-width: 1200px;
+  margin: 100px auto 50px;
+  padding: 20px;
+  display: flex;
+  gap: 40px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.booking-steps {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  padding: 0 20px;
+  flex-wrap: wrap;
+}
+
+.step {
+  text-align: center;
+  flex: 1;
+  position: relative;
+}
+
+.step-number {
+  width: 40px;
+  height: 40px;
+  background-color: #4CAF50;
+  color: white;
+  font-weight: bold;
+  border-radius: 50%;
+  margin: auto;
+  line-height: 40px;
+  font-size: 18px;
+}
+
+.step-title {
+  margin-top: 10px;
+  color: #333;
+  font-size: 14px;
+}
+
+.step.active .step-number {
+  background-color: #2e7d32;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+.booking-content {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.package-summary, .booking-form {
+  flex: 1;
+  background-color: #fdfdfd;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  padding: 25px;
+}
+
+.summary-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  background-color: #fff;
+  margin-bottom: 20px;
+}
+
+.summary-header h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.package-price {
+  font-size: 20px;
+  color: #4CAF50;
+  font-weight: bold;
+}
+
+.summary-details p {
+  margin: 6px 0;
+  color: #555;
+}
+
+.inclusions ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.inclusions li {
+  margin: 8px 0;
+  color: #333;
+}
+
+.inclusions i {
+  color: #4CAF50;
+  margin-right: 8px;
+}
+
+.booking-form h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.form-group, .form-row {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+}
+
+.btn-continue, .btn-back {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btn-continue {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.btn-back {
+  background-color: #ccc;
+  color: black;
+}
+
+.btn-continue:hover {
+  background-color: #45a049;
+}
+
+.btn-back:hover {
+  background-color: #bbb;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .booking-content {
+    flex-direction: column;
+  }
+
+  .form-row {
+    flex-direction: column;
+  }
+
+  .booking-steps {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+        .site-footer {
+  background-color: #1e1e2f; /* Dark background */
+  color: #f1f1f1; /* Light text */
+  padding: 40px 20px;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border-top: 4px solid #4CAF50;
+}
+
+.site-footer .footer-content {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.site-footer p {
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: #dcdcdc;
+}
+
+.site-footer .footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.site-footer .footer-links li a {
+  color: #b5e853;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.site-footer .footer-links li a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+</style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="scrolling-nav">
+        <div class="nav-container">
+            <div class="logo">TravelWorld</div>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="destinations.html">Destinations</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="index.html" class="dashboard-btn"><i class="fas fa-user-circle"></i> Dashboard</a></li>
+            </ul>
+            <div class="search-box">
+                <input type="text" placeholder="Search destinations...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <main class="booking-container">
+        <div class="booking-steps">
+            <div class="step active">
+                <div class="step-number">1</div>
+                <div class="step-title">Package Details</div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-title">Traveler Info</div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-title">Payment</div>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-title">Confirmation</div>
+            </div>
+        </div>
+
+        <div class="booking-content">
+            <div class="package-summary">
+                <h2>Your Selected Package</h2>
+                <div class="summary-card">
+                    <div class="summary-header">
+                        <h3 id="package-name">Paris Explorer</h3>
+                        <div class="package-price" id="package-price">$1,299 <span>/person</span></div>
+                    </div>
+                    <div class="summary-details">
+                        <p><i class="fas fa-map-marker-alt"></i> <span id="package-destination">Paris, France</span></p>
+                        <p><i class="fas fa-clock"></i> <span id="package-duration">5 Days / 4 Nights</span></p>
+                        <p><i class="fas fa-calendar-alt"></i> <span id="package-dates">June 15 - June 20, 2023</span></p>
+                        <p><i class="fas fa-user-friends"></i> <span id="package-travelers">2 Adults</span></p>
+                    </div>
+                </div>
+                
+                <div class="inclusions">
+                    <h3>What's Included</h3>
+                    <ul id="package-inclusions">
+                        <li><i class="fas fa-check"></i> 4 nights accommodation in 4-star hotel</li>
+                        <li><i class="fas fa-check"></i> Daily breakfast</li>
+                        <li><i class="fas fa-check"></i> Guided city tour</li>
+                        <li><i class="fas fa-check"></i> Airport transfers</li>
+                        <li><i class="fas fa-check"></i> 24/7 support</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="booking-form">
+                <h2>Traveler Information</h2>
+                <form id="travelerInfoForm">
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <input type="text" id="address" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <input type="text" id="city" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="country">Country</label>
+                            <input type="text" id="country" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="zipCode">ZIP Code</label>
+                            <input type="text" id="zipCode" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="passport">Passport Number</label>
+                            <input type="text" id="passport" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Special Requirements</label>
+                        <textarea id="specialRequirements" rows="4"></textarea>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn-back">Back</button>
+                        <!-- <button type="submit" class="btn-continue">Continue to Payment</button> -->
+                        <button class="btn-continue" onclick="window.location.href='payment.html';">Book Now</button>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>&copy; 2025 TravelWorld. All Rights Reserved.</p>
+            <ul class="footer-links">
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Use</a></li>
+                <li><a href="#">Help Center</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/booking.js"></script>
+</body>
+</html>

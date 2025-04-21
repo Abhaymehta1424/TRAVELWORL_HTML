@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelWorld - Travel Gallery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <style>
+        .site-footer {
+  background-color: #1e1e2f; /* Dark background */
+  color: #f1f1f1; /* Light text */
+  padding: 40px 20px;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border-top: 4px solid #4CAF50;
+}
+
+.site-footer .footer-content {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.site-footer p {
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: #dcdcdc;
+}
+
+.site-footer .footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.site-footer .footer-links li a {
+  color: #b5e853;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.site-footer .footer-links li a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+        .destination-gallery {
+            padding: 4rem 2rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+        }
+/* Add Post Button Style */
+.add-post-btn {
+  background-color: #4CAF50; /* Green background */
+  color: white; /* White text */
+  font-size: 16px; /* Font size */
+  font-weight: bold; /* Bold text */
+  padding: 12px 20px; /* Padding inside the button */
+  border: none; /* No border */
+  border-radius: 8px; /* Rounded corners */
+  display: inline-flex; /* Align icon and text horizontally */
+  align-items: center; /* Vertically center the content */
+  margin-left: 500px;
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition */
+}
+
+/* Add Post Button Hover Effect */
+.add-post-btn:hover {
+  background-color: #45a049; /* Darker green on hover */
+  transform: translateY(-3px); /* Slightly lift the button */
+}
+
+/* Icon inside the button */
+.add-post-btn i {
+  margin-right: 18px; /* Space between the icon and text */
+  font-size: 18px; /* Icon size */
+}
+
+/* Add Post Button Active Effect */
+.add-post-btn:active {
+  background-color: #388e3c; /* Even darker green on click */
+  transform: translateY(0); /* Reset the lift effect */
+}
+
+/* Add Post Button Focus Effect */
+.add-post-btn:focus {
+  outline: none; /* Remove default focus outline */
+  box-shadow: 0 0 5px rgba(0, 150, 136, 0.6); /* Green glow on focus */
+}
+
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="scrolling-nav">
+        <div class="nav-container">
+            <div class="logo">TravelWorld</div>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="destinations.html">Destinations</a></li>
+                <li><a href="gallery.html" class="active">Gallery</a></li>
+            
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="index.html" class="dashboard-btn"><i class="fas fa-user-circle"></i> Dashboard</a></li>
+            </ul>
+            <div class="search-box">
+                <input type="text" placeholder="Search destinations...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+    <br><br><br>
+    <section class="destination-gallery">
+        <h2 class="section-title">Gallery</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item" style="background-image: url('images/paris1.jpeg');"></div>
+            <div class="gallery-item" style="background-image: url('images/paris2.jpeg');"></div>
+            <div class="gallery-item" style="background-image: url('images/paris3.jpeg');"></div>
+            <div class="gallery-item" style="background-image: url('images/paris4.jpeg');"></div>
+            <div class="gallery-item" style="background-image: url('images/paris5.jpeg');"></div>
+            <div class="gallery-item" style="background-image: url('images/paris6.jpeg');"></div>
+            <div class="gallery-item" style="background-image: url('images/tokyo.jpg');"></div>
+            <div class="gallery-item" style="background-image: url('images/newyork.jpg');"></div>
+            <div class="gallery-item" style="background-image: url('images/about1.jpg');"></div>
+            <div class="gallery-item" style="background-image: url('images/about2.jpg');"></div>
+            <div class="gallery-item" style="background-image: url('images/about3.jpg');"></div>
+        </div>
+    </section>
+    <main class="gallery-main">
+        <!-- All gallery and modal content here -->
+
+        <!-- Add Post Button -->
+        <button class="add-post-btn" onclick="openAddPostModal()">
+            <i class="fas fa-plus"></i> Add Post
+        </button>
+    </main>
+
+
+    <br>
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>&copy; 2025 TravelWorld. All Rights Reserved.</p>
+            <ul class="footer-links">
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Use</a></li>
+                <li><a href="#">Help Center</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <!-- <script src="js/gallery.js"></script>
+    <script src="js/modal.js"></script> -->
+</body>
+</html>

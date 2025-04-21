@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelWorld - Destination Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <style>
+        
+        .site-footer {
+  background-color: #1e1e2f; /* Dark background */
+  color: #f1f1f1; /* Light text */
+  padding: 40px 20px;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border-top: 4px solid #4CAF50;
+}
+
+.site-footer .footer-content {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.site-footer p {
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: #dcdcdc;
+}
+
+.site-footer .footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.site-footer .footer-links li a {
+  color: #b5e853;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.site-footer .footer-links li a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        .scrolling-nav {
+            background: linear-gradient(to right, #2c3e50, #3498db);
+            color: #fff;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .nav-links li {
+            display: inline-block;
+            margin: 0 15px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .nav-links a.active,
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+        .destination-hero {
+            background: url('images/paris.jpg') center center/cover no-repeat;
+            color: white;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .book-now-btn {
+            padding: 10px 25px;
+            font-size: 1rem;
+            border: none;
+            background: #e74c3c;
+            color: #fff;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .book-now-btn:hover {
+            background: #c0392b;
+        }
+
+        .destination-info {
+            padding: 4rem 2rem;
+            background-color: #fff;
+        }
+
+        .info-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .info-stats {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .stat-card {
+            background: #f1f1f1;
+            padding: 1rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .packages-section {
+            padding: 4rem 2rem;
+            background: #ecf0f1;
+        }
+
+        .packages-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .package-card {
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .package-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .package-header {
+            background-color: #2980b9;
+            color: white;
+            padding: 1rem;
+        }
+
+        .package-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .package-details {
+            padding: 1rem;
+            line-height: 1.6;
+        }
+
+        .select-package {
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+        }
+
+        .select-package:hover {
+            background: #1e8449;
+        }
+
+        .destination-gallery {
+            padding: 4rem 2rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+        }
+
+        .testimonials {
+            padding: 4rem 2rem;
+            background: #f7f9fc;
+        }
+
+        .testimonial-slider {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .testimonial {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            margin-top: 1rem;
+        }
+
+        .testimonial-author img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 1rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="scrolling-nav">
+        <div class="nav-container">
+            <div class="logo">TravelWorld</div>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="destinations.html" class="active">Destinations</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="index.html" class="dashboard-btn"><i class="fas fa-user-circle"></i> Dashboard</a></li>
+            </ul>
+            <div class="search-box">
+                <input type="text" placeholder="Search destinations...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <main class="destination-details">
+        <!-- Destination Hero Section -->
+        <section class="destination-hero" id="destination-hero">
+            <div class="hero-content">
+                <h1 id="destination-title">Paris, France</h1>
+                <p id="destination-tagline">The City of Love and Lights</p>
+                <button class="book-now-btn pulse-animation" onclick="window.location.href='booking.html';">Book Now</button>
+            </div>
+        </section>
+
+        <!-- Destination Info -->
+        <section class="destination-info">
+            <div class="info-container">
+                <div class="info-text" data-scroll="fade-right">
+                    <h2>About This Destination</h2>
+                    <p id="destination-description">Paris, France's capital, is a major European city and a global center for art, fashion, gastronomy and culture. Its 19th-century cityscape is crisscrossed by wide boulevards and the River Seine. Beyond such landmarks as the Eiffel Tower and the 12th-century, Gothic Notre-Dame cathedral, the city is known for its cafe culture and designer boutiques along the Rue du Faubourg Saint-Honoré.</p>
+                    
+                    <div class="highlights">
+                        <h3>Highlights</h3>
+                        <ul id="destination-highlights">
+                            <li><i class="fas fa-check-circle"></i> Eiffel Tower</li>
+                            <li><i class="fas fa-check-circle"></i> Louvre Museum</li>
+                            <li><i class="fas fa-check-circle"></i> Notre-Dame Cathedral</li>
+                            <li><i class="fas fa-check-circle"></i> Champs-Élysées</li>
+                            <li><i class="fas fa-check-circle"></i> Seine River Cruise</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="info-stats" data-scroll="fade-left">
+                    <div class="stat-card">
+                        <i class="fas fa-calendar-alt"></i>
+                        <h4>Best Time to Visit</h4>
+                        <p id="best-time">April to June, September to October</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-language"></i>
+                        <h4>Language</h4>
+                        <p id="language">French</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-money-bill-wave"></i>
+                        <h4>Currency</h4>
+                        <p id="currency">Euro (€)</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-clock"></i>
+                        <h4>Time Zone</h4>
+                        <p id="time-zone">CET (UTC+1)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Packages Section -->
+        <section class="packages-section">
+            <h2 class="section-title">Available Packages</h2>
+            
+            <div class="packages-container">
+                <div class="package-card" data-scroll="fade">
+                    <div class="package-header">
+                        <h3>Paris Explorer</h3>
+                        <div class="package-price">$1,299 <span>/person</span></div>
+                    </div>
+                    <div class="package-details">
+                        <p><i class="fas fa-clock"></i> 5 Days / 4 Nights</p>
+                        <p><i class="fas fa-hotel"></i> 4-Star Accommodation</p>
+                        <p><i class="fas fa-utensils"></i> Breakfast Included</p>
+                        <p><i class="fas fa-map-marked-alt"></i> Guided City Tour</p>
+                    </div>
+                    <button class="select-package" data-package="paris-explorer">Select Package</button>
+                </div>
+                
+                <div class="package-card" data-scroll="fade" data-scroll-delay="0.2">
+                    <div class="package-header">
+                        <h3>Romantic Paris</h3>
+                        <div class="package-price">$1,899 <span>/couple</span></div>
+                    </div>
+                    <div class="package-details">
+                        <p><i class="fas fa-clock"></i> 7 Days / 6 Nights</p>
+                        <p><i class="fas fa-hotel"></i> 5-Star Boutique Hotel</p>
+                        <p><i class="fas fa-utensils"></i> Breakfast & Dinner</p>
+                        <p><i class="fas fa-heart"></i> Romantic Seine Cruise</p>
+                    </div>
+                    <button class="select-package" data-package="romantic-paris">Select Package</button>
+                </div>
+                
+                <div class="package-card" data-scroll="fade" data-scroll-delay="0.4">
+                    <div class="package-header">
+                        <h3>Paris Family Fun</h3>
+                        <div class="package-price">$2,499 <span>/family</span></div>
+                    </div>
+                    <div class="package-details">
+                        <p><i class="fas fa-clock"></i> 8 Days / 7 Nights</p>
+                        <p><i class="fas fa-hotel"></i> Family Suite Accommodation</p>
+                        <p><i class="fas fa-utensils"></i> All Meals Included</p>
+                        <p><i class="fas fa-child"></i> Disneyland Paris Tickets</p>
+                    </div>
+                    <button class="select-package" data-package="family-paris">Select Package</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="destination-gallery">
+            <h2 class="section-title">Gallery</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item" style="background-image: url('images/paris1.jpeg');"></div>
+                <div class="gallery-item" style="background-image: url('images/paris2.jpeg');"></div>
+                <div class="gallery-item" style="background-image: url('images/paris3.jpeg');"></div>
+                <div class="gallery-item" style="background-image: url('images/paris4.jpeg');"></div>
+                <div class="gallery-item" style="background-image: url('images/paris5.jpeg');"></div>
+                <!-- <div class="gallery-item" style="background-image: url('images/paris6.jpeg');"></div> -->
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="testimonials">
+            <h2 class="section-title">Traveler Experiences</h2>
+            <div class="testimonial-slider">
+                <div class="testimonial active">
+                    <div class="testimonial-content">
+                        <p>"Paris exceeded all our expectations! The architecture, the food, the atmosphere - everything was magical. The Eiffel Tower at night is something you have to experience."</p>
+                        <div class="testimonial-author">
+                            <img src="images/user1.jpg" alt="Sarah Johnson">
+                            <div>
+                                <h4>Sarah Johnson</h4>
+                                <p>New York, USA</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <p>"We visited Paris for our honeymoon and it was perfect. The romantic cruise on the Seine was the highlight of our trip. Can't wait to go back!"</p>
+                        <div class="testimonial-author">
+                            <img src="images/user2.jpg" alt="Michael Chen">
+                            <div>
+                                <h4>Michael & Lisa Chen</h4>
+                                <p>Toronto, Canada</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <p>"As an art lover, the Louvre was a dream come true. But Paris has so much more to offer - the cafes, the markets, the hidden gems around every corner."</p>
+                        <div class="testimonial-author">
+                            <img src="images/user3.jpg" alt="Emma Rodriguez">
+                            <div>
+                                <h4>Emma Rodriguez</h4>
+                                <p>Madrid, Spain</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>&copy; 2025 TravelWorld. All Rights Reserved.</p>
+            <ul class="footer-links">
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Use</a></li>
+                <li><a href="#">Help Center</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/destination.js"></script>
+</body>
+</html>

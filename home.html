@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelWorld - Explore the World</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <style>
+        .site-footer {
+  background-color: #1e1e2f; /* Dark background */
+  color: #f1f1f1; /* Light text */
+  padding: 40px 20px;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border-top: 4px solid #4CAF50;
+}
+
+.site-footer .footer-content {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.site-footer p {
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: #dcdcdc;
+}
+
+.site-footer .footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.site-footer .footer-links li a {
+  color: #b5e853;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.site-footer .footer-links li a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+</style>
+</head>
+<body>
+    <!-- Animated Navigation -->
+    <nav class="scrolling-nav">
+        <div class="nav-container">
+            <div class="logo">TravelWorld</div>
+            <ul class="nav-links">
+                <li><a href="home.html" class="active">Home</a></li>
+                <li><a href="#destinations">Destinations</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="index.html" class="dashboard-btn"><i class="fas fa-user-circle"></i> Dashboard</a></li>
+            </ul>
+            <div class="search-box">
+                <input type="text" placeholder="Search destinations...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Travel Quotes -->
+    <section class="hero" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/about1.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; padding: 100px 20px; color: white; text-align: center; position: relative;">
+        <div class="quote-slider" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; max-width: 800px;">
+            <div class="quote active" style="display: block; font-size: 24px; line-height: 1.5; font-style: italic; text-align: center;">
+                <h2>"The world is a book, and those who do not travel read only a page."</h2>
+                <p>- Saint Augustine</p>
+            </div>
+            <div class="quote" style="display: none; font-size: 24px; line-height: 1.5; font-style: italic; text-align: center;">
+                <h2>"Travel makes one modest. You see what a tiny place you occupy in the world."</h2>
+                <p>- Gustave Flaubert</p>
+            </div>
+            <div class="quote" style="display: none; font-size: 24px; line-height: 1.5; font-style: italic; text-align: center;">
+                <h2>"Life is either a daring adventure or nothing at all."</h2>
+                <p>- Helen Keller</p>
+            </div>
+        </div>
+        <a href="destinations.html" style="text-decoration: none;">
+            <button class="explore-btn pulse-animation" style="background-color: #4CAF50; color: white; border: none; padding: 15px 30px; font-size: 18px; cursor: pointer; margin-top: 30px; border-radius: 5px; transition: background-color 0.3s; animation: pulse 1.5s infinite;">
+                Explore Packages
+            </button>
+        </a>
+            </section>
+    
+    <style>
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    
+        .hero .quote-slider .quote {
+            display: none;
+        }
+    
+        .hero .quote-slider .quote.active {
+            display: block;
+        }
+    </style>
+    
+    <script>
+        let currentIndex = 0;
+        const quotes = document.querySelectorAll('.quote');
+    
+        function showNextQuote() {
+            quotes[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % quotes.length;
+            quotes[currentIndex].classList.add('active');
+        }
+    
+        setInterval(showNextQuote, 5000); // Change quote every 5 seconds
+    </script>
+    
+
+    <!-- About Us Section -->
+    <section id="about" class="about-section">
+        <h2 class="section-title">About Our Journey</h2>
+        <div class="about-content">
+            <div class="about-card">
+                <div class="about-image" style="background-image: url('images/about1.jpg');">
+                    <div class="image-overlay">
+                        <h3>Our Story</h3>
+                    </div>
+                </div>
+                <p>Founded in 2005, TravelWorld began as a small team of passionate travelers wanting to share the beauty of the world with others.</p>
+            </div>
+            <div class="about-card">
+                <div class="about-image" style="background-image: url('images/about2.jpg');">
+                    <div class="image-overlay">
+                        <h3>Our Mission</h3>
+                    </div>
+                </div>
+                <p>To create unforgettable travel experiences that inspire, educate, and connect people across cultures.</p>
+            </div>
+            <div class="about-card">
+                <div class="about-image" style="background-image: url('images/about3.jpg');">
+                    <div class="image-overlay">
+                        <h3>Our Team</h3>
+                    </div>
+                </div>
+                <p>A diverse group of travel experts, local guides, and adventure enthusiasts dedicated to making your journey exceptional.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Destination Preview -->
+    <section id="destinations" class="destinations-preview">
+        <h2 class="section-title">Featured Destinations</h2>
+        <div class="destination-cards">
+            <div class="destination-card" data-destination="paris">
+                <img src="images/paris.jpg" alt="Paris">
+                <div class="card-overlay">
+                    <h3>Paris, France</h3>
+                    <a href="destinations.html" style="text-decoration: none;">
+                        <button class="see-packages">See Packages</button>
+                    </a>
+                </div>
+            </div>
+            <div class="destination-card" data-destination="tokyo">
+                <img src="images/tokyo.jpg" alt="Tokyo">
+                <div class="card-overlay">
+                    <h3>Tokyo, Japan</h3>
+                    <a href="destinations.html" style="text-decoration: none;">
+                        <button class="see-packages">See Packages</button>
+                    </a>
+                </div>
+            </div>
+            <div class="destination-card" data-destination="newyork">
+                <img src="images/newyork.jpg" alt="New York">
+                <div class="card-overlay">
+                    <h3>New York, USA</h3>
+                    <a href="destinations.html" style="text-decoration: none;">
+                        <button class="see-packages">See Packages</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <h2>Ready for Your Next Adventure?</h2>
+        <p>Join thousands of happy travelers who've explored the world with us</p>
+        <div class="cta-buttons">
+            <a href="destinations.html" class="btn-primary">Browse All Destinations</a>
+
+<a href="contact.html" class="btn-secondary">Contact Our Experts</a>
+
+        </div>
+    </section>
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>&copy; 2025 TravelWorld. All Rights Reserved.</p>
+            <ul class="footer-links">
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Use</a></li>
+                <li><a href="#">Help Center</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

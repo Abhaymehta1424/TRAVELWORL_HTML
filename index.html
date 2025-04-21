@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelWorld - Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <style>
+        .btn-signup {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #4CAF50; /* Green */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn-signup:hover {
+  background-color: #45a049;
+}
+
+    </style>
+</head>
+<body class="dashboard">
+    <div class="dashboard-container">
+        <div class="auth-forms">
+            <!-- Login Form -->
+            <div class="form-container login-form active">
+                <h2>Welcome Back</h2>
+                <form id="loginForm">
+                    <div class="input-group">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="loginEmail" placeholder="Email" required>
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="loginPassword" placeholder="Password" required>
+                    </div>
+                    <a href="home.html" class="btn-signup">Login</a>
+                    <p class="toggle-form">Don't have an account? <a href="signup.html" id="showSignup">Sign up</a></p>
+                </form>
+            </div>
+
+            <!-- Signup Form -->
+            <div class="form-container signup-form">
+                <h2>Create Account</h2>
+                <form id="signupForm">
+                    <div class="input-group">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="signupName" placeholder="Full Name" required>
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="signupEmail" placeholder="Email" required>
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="signupPassword" placeholder="Password" required>
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="signupConfirmPassword" placeholder="Confirm Password" required>
+                    </div>
+                    <a href="home.html" class="btn-signup">Sign In</a>
+                    <p class="toggle-form">Already have an account? <a href="#" id="showLogin">Login</a></p>
+                </form>
+            </div>
+        </div>
+
+        <div class="dashboard-overview">
+            <h1>TravelWorld</h1>
+            <p>Your gateway to unforgettable adventures around the globe</p>
+            
+            <div class="agency-cards">
+                <div class="agency-card">
+                    <img src="images/agency1.jpg" alt="Global Tours">
+                    <h3>Global Tours</h3>
+                    <p>20+ years of creating magical journeys</p>
+                </div>
+                <div class="agency-card">
+                    <img src="images/agency2.jpg" alt="Adventure Seekers">
+                    <h3>Adventure Seekers</h3>
+                    <p>Specialists in thrill and excitement</p>
+                </div>
+                <div class="agency-card">
+                    <img src="images/agency3.jpg" alt="Luxury Escapes">
+                    <h3>Luxury Escapes</h3>
+                    <p>Premium experiences at your fingertips</p>
+                </div>
+            </div>
+
+            <div class="dashboard-features">
+                <div class="feature">
+                    <i class="fas fa-globe"></i>
+                    <p>100+ Destinations</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-smile"></i>
+                    <p>10,000+ Happy Travelers</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-award"></i>
+                    <p>Award Winning Service</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
