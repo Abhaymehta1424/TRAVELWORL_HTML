@@ -2,9 +2,8 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "travel-website"
-        CONTAINER_NAME = "travel_website_container"
-        PORT_MAPPING = "8081:80"
+        IMAGE_NAME = "abhay202001/travel-website"
+        DOCKER_CREDENTIALS_ID = "docker-hub-credentials"
     }
 
     stages {
@@ -17,24 +16,17 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    sh "docker build -t ${IMAGE_NAME} ."
+                    sh "docker build -t ${IMAGE_NAME}:latest ."
                 }
             }
         }
 
-        stage('Remove Old Container') {
+        stage('Push to Docker Hub') {
             steps {
                 script {
-                    sh "docker stop ${CONTAINER_NAME} || true"
-                    sh "docker rm ${CONTAINER_NAME} || true"
-                }
-            }
-        }
-
-        stage('Run New Container') {
-            steps {
-                script {
-                    sh "docker run -d --name ${CONTAINER_NAME} -p ${PORT_MAPPING} ${IMAGE_NAME}"
+                    docker.withRegistry('https://index.docker.io/v1/', DOCKER_CREDENTIALS_ID) {
+                        sh "docker push ${IMAGE_NAME}:latest"
+                    }
                 }
             }
         }
@@ -42,10 +34,10 @@ pipeline {
 
     post {
         success {
-            echo "Site deployed at http://localhost:8081"
+            echo "Docker image pushed to Docker Hub: ${IMAGE_NAME}:latest"
         }
         failure {
-            echo "Build failed."
+            echo "Something went wrong!"
         }
     }
 }
