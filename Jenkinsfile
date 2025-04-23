@@ -20,6 +20,16 @@ pipeline {
                 }
             }
         }
+        stage('Run Docker Container') {
+        steps {
+                script {
+                    sh 'docker rm -f travel-container || true'
+
+                    sh 'docker run -d --name travel-container -p 80:80 abhay202001/travel-website:latest'
+                }
+            }
+        }
+
         stage('Push to Docker Hub') {
             steps {
                 script {
