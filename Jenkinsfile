@@ -2,28 +2,14 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "abhay202001/gym"
-        CONTAINER_NAME = "gym"
+        IMAGE_NAME = "abhay202001/travel-website"
         DOCKER_CREDENTIALS_ID = "docker-hub-credentials"
-        HOST_PORT = "80"
-        CONTAINER_PORT = "80"
     }
 
     stages {
-        stage('Configure Git SSL') {
+        stage('Checkout') {
             steps {
-                sh 'git config --global http.sslVerify false'  // Disables SSL verification
-            }
-        }
-
-        stage('Checkout Code') {
-            steps {
-                checkout([
-                    $class: 'GitSCM',
-                    branches: [[name: '*/main']],
-                    extensions: [],
-                    userRemoteConfigs: [[url: 'https://github.com/Abhaymehta1424/TRAVELWORL_HTML.git']]
-                ])
+                checkout scm
             }
         }
 
@@ -34,24 +20,12 @@ pipeline {
                 }
             }
         }
-
-        stage('Stop Previous Container') {
-            steps {
+        stage('Run Docker Container') {
+        steps {
                 script {
-                    sh "docker rm -f ${CONTAINER_NAME} || true"
-                }
-            }
-        }
+                    sh 'docker rm -f travel-container || true'
 
-        stage('Run Container') {
-            steps {
-                script {
-                    sh """
-                    docker run -d \
-                        --name ${CONTAINER_NAME} \
-                        -p ${HOST_PORT}:${CONTAINER_PORT} \
-                        ${IMAGE_NAME}:latest
-                    """
+                    sh 'docker run -d --name travel-container -p 80:80 abhay202001/travel-website:latest'
                 }
             }
         }
@@ -59,13 +33,9 @@ pipeline {
         stage('Push to Docker Hub') {
             steps {
                 script {
-                    withCredentials([usernamePassword(
-                        credentialsId: env.DOCKER_CREDENTIALS_ID,
-                        usernameVariable: 'DOCKER_USER',
-                        passwordVariable: 'DOCKER_PASS'
-                    )]) {
+                    withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
                         sh 'echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin'
-                        sh "docker push ${IMAGE_NAME}:latest"
+                        sh 'docker push abhay202001/travel-website:latest'
                     }
                 }
             }
@@ -74,14 +44,10 @@ pipeline {
 
     post {
         success {
-            echo "SUCCESS: Container ${CONTAINER_NAME} running on port ${HOST_PORT}"
-            echo "Docker image pushed: ${IMAGE_NAME}:latest"
+            echo "Docker image pushed to Docker Hub: ${IMAGE_NAME}:latest"
         }
         failure {
-            echo "FAILURE: Check pipeline logs for errors"
-        }
-        always {
-            cleanWs()
+            echo "Something went wrong!"
         }
     }
 }
