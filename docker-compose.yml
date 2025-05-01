@@ -1,11 +1,10 @@
 version: '3.8'
 
 services:
-  gym-website:
+  travel-website:
     build: .
-    image: abhay202001/gym:latest
     ports:
-      - "80:80"
+      - "8081:80"
     volumes:
-      - ./:/usr/share/nginx/html
-    container_name: gym
+      - .:/usr/share/nginx/html
+    container_name: travel_website_container
