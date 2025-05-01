@@ -3,115 +3,686 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FitCore - Dashboard</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/animations.css">
+    <title>PowerFit Gym</title>
     <style>
-        .btn-signup {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            text-decoration: none;
-            font-size: 16px;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
         }
 
-        .btn-signup:hover {
-            background-color: #45a049;
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #222;
+            color: white;
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #ff5500;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ff5500;
+        }
+
+        /* Page Container */
+        .page {
+            display: none;
+            padding: 6rem 2rem 2rem;
+            min-height: 100vh;
+        }
+
+        .page.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        /* Home Page */
+        #home {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://via.placeholder.com/1920x1080') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: slideDown 1s ease-out;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            animation: slideUp 1s ease-out;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #ff5500;
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border: none;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .btn:hover {
+            background-color: #e04b00;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 4rem 0;
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: #ff5500;
+        }
+
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            width: 300px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .about-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .about-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .about-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ff5500;
+        }
+
+        .about-card p {
+            margin-bottom: 1.5rem;
+        }
+
+        /* Contact Page */
+        #contact {
+            background-color: white;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        /* Login & Register Pages */
+        #login, #register {
+            background-color: white;
+        }
+
+        .auth-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .auth-container h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #ff5500;
+        }
+
+        /* Explore Page */
+        #explore {
+            background-color: white;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            height: 250px;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            color: white;
+            padding: 1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover .overlay {
+            transform: translateY(0);
+        }
+
+        /* Accessories Page */
+        #accessories {
+            background-color: white;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .product-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .product-card:hover .product-img img {
+            transform: scale(1.1);
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-info h3 {
+            margin-bottom: 0.5rem;
+            color: #ff5500;
+        }
+
+        .product-info p {
+            margin-bottom: 1rem;
+            color: #666;
+        }
+
+        .product-price {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #222;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                flex-direction: column;
+                align-items: center;
+            }
         }
     </style>
 </head>
-<body class="dashboard">
-    <div class="dashboard-container">
-        <div class="auth-forms">
-            <!-- Login Form -->
-            <div class="form-container login-form active">
-                <h2>Welcome Back to FitCore</h2>
-                <form id="loginForm">
-                    <div class="input-group">
-                        <i class="fas fa-envelope"></i>
-                        <input type="email" id="loginEmail" placeholder="Email" required>
-                    </div>
-                    <div class="input-group">
-                        <i class="fas fa-lock"></i>
-                        <input type="password" id="loginPassword" placeholder="Password" required>
-                    </div>
-                    <a href="home.html" class="btn-signup">Login</a>
-                    <p class="toggle-form">Don't have an account? <a href="signup.html" id="showSignup">Sign up</a></p>
-                </form>
-            </div>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">PowerFit</div>
+        <ul class="nav-links">
+            <li><a href="#" class="nav-link" data-page="home">Home</a></li>
+            <li><a href="#" class="nav-link" data-page="explore">Explore</a></li>
+            <li><a href="#" class="nav-link" data-page="accessories">Accessories</a></li>
+            <li><a href="#" class="nav-link" data-page="contact">Contact</a></li>
+            <li><a href="#" class="nav-link" data-page="login">Login</a></li>
+            <li><a href="#" class="nav-link" data-page="register">Register</a></li>
+        </ul>
+    </nav>
 
-            <!-- Signup Form -->
-            <div class="form-container signup-form">
-                <h2>Join FitCore</h2>
-                <form id="signupForm">
-                    <div class="input-group">
-                        <i class="fas fa-user"></i>
-                        <input type="text" id="signupName" placeholder="Full Name" required>
-                    </div>
-                    <div class="input-group">
-                        <i class="fas fa-envelope"></i>
-                        <input type="email" id="signupEmail" placeholder="Email" required>
-                    </div>
-                    <div class="input-group">
-                        <i class="fas fa-lock"></i>
-                        <input type="password" id="signupPassword" placeholder="Password" required>
-                    </div>
-                    <div class="input-group">
-                        <i class="fas fa-lock"></i>
-                        <input type="password" id="signupConfirmPassword" placeholder="Confirm Password" required>
-                    </div>
-                    <a href="home.html" class="btn-signup">Sign In</a>
-                    <p class="toggle-form">Already have an account? <a href="#" id="showLogin">Login</a></p>
-                </form>
-            </div>
+    <!-- Pages -->
+    <div id="home" class="page active">
+        <div class="hero-content">
+            <h1>Transform Your Body, Transform Your Life</h1>
+            <p>Join PowerFit Gym today and start your journey to a healthier, stronger you with our state-of-the-art facilities and expert trainers.</p>
+            <a href="#" class="btn" data-page="register">Join Now</a>
         </div>
+    </div>
 
-        <div class="dashboard-overview">
-            <h1>FitCore</h1>
-            <p>Your ultimate fitness destination to build strength and wellness</p>
-            
-            <div class="agency-cards">
-                <div class="agency-card">
-                    <img src="images/gym1.jpg" alt="Pro Trainers">
-                    <h3>Elite Trainers</h3>
-                    <p>Certified coaches guiding you to peak performance</p>
-                </div>
-                <div class="agency-card">
-                    <img src="images/gym2.jpg" alt="Modern Equipment">
-                    <h3>Modern Equipment</h3>
-                    <p>State-of-the-art machines and free weights</p>
-                </div>
-                <div class="agency-card">
-                    <img src="images/gym3.jpg" alt="Wellness Programs">
-                    <h3>Wellness Programs</h3>
-                    <p>Customized workout & diet plans for all fitness levels</p>
+    <div id="explore" class="page">
+        <h2 class="section-title">Explore Our Facility</h2>
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/400x300" alt="Gym Area">
+                <div class="overlay">
+                    <h3>Main Workout Area</h3>
+                    <p>State-of-the-art equipment</p>
                 </div>
             </div>
-
-            <div class="dashboard-features">
-                <div class="feature">
-                    <i class="fas fa-dumbbell"></i>
-                    <p>100+ Workout Options</p>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/400x300" alt="Cardio Area">
+                <div class="overlay">
+                    <h3>Cardio Zone</h3>
+                    <p>Latest treadmills and bikes</p>
                 </div>
-                <div class="feature">
-                    <i class="fas fa-users"></i>
-                    <p>5,000+ Happy Members</p>
+            </div>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/400x300" alt="Yoga Studio">
+                <div class="overlay">
+                    <h3>Yoga Studio</h3>
+                    <p>Peaceful space for mindfulness</p>
                 </div>
-                <div class="feature">
-                    <i class="fas fa-heartbeat"></i>
-                    <p>Holistic Health Approach</p>
+            </div>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/400x300" alt="Locker Room">
+                <div class="overlay">
+                    <h3>Luxury Locker Rooms</h3>
+                    <p>Spacious and clean facilities</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/400x300" alt="Pool">
+                <div class="overlay">
+                    <h3>Swimming Pool</h3>
+                    <p>Olympic-sized pool</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/400x300" alt="Sauna">
+                <div class="overlay">
+                    <h3>Sauna & Spa</h3>
+                    <p>Relax after your workout</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="js/auth.js"></script>
-    <script src="js/main.js"></script>
+    <div id="accessories" class="page">
+        <h2 class="section-title">Gym Accessories</h2>
+        <div class="products">
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="https://via.placeholder.com/300x200" alt="Dumbbells">
+                </div>
+                <div class="product-info">
+                    <h3>Professional Dumbbells</h3>
+                    <p>High-quality rubber coated dumbbells</p>
+                    <div class="product-price">$49.99</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="https://via.placeholder.com/300x200" alt="Yoga Mat">
+                </div>
+                <div class="product-info">
+                    <h3>Premium Yoga Mat</h3>
+                    <p>Non-slip, extra thick mat</p>
+                    <div class="product-price">$29.99</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="https://via.placeholder.com/300x200" alt="Protein Shaker">
+                </div>
+                <div class="product-info">
+                    <h3>Protein Shaker Bottle</h3>
+                    <p>Leak-proof with mixer ball</p>
+                    <div class="product-price">$12.99</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="https://via.placeholder.com/300x200" alt="Resistance Bands">
+                </div>
+                <div class="product-info">
+                    <h3>Resistance Bands Set</h3>
+                    <p>5 bands with different resistance levels</p>
+                    <div class="product-price">$24.99</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="https://via.placeholder.com/300x200" alt="Gym Gloves">
+                </div>
+                <div class="product-info">
+                    <h3>Weight Lifting Gloves</h3>
+                    <p>Padded palms for protection</p>
+                    <div class="product-price">$19.99</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="https://via.placeholder.com/300x200" alt="Foam Roller">
+                </div>
+                <div class="product-info">
+                    <h3>High-Density Foam Roller</h3>
+                    <p>For muscle recovery</p>
+                    <div class="product-price">$34.99</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="contact" class="page">
+        <h2 class="section-title">Contact Us</h2>
+        <div class="contact-form">
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="login" class="page">
+        <div class="auth-container">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" name="password" required>
+                </div>
+                <button type="submit" class="btn">Login</button>
+                <p style="text-align: center; margin-top: 1rem;">
+                    Don't have an account? <a href="#" class="nav-link" data-page="register">Register here</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <div id="register" class="page">
+        <div class="auth-container">
+            <h2>Register</h2>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="regName">Full Name</label>
+                    <input type="text" id="regName" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="regEmail">Email</label>
+                    <input type="email" id="regEmail" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="regPassword">Password</label>
+                    <input type="password" id="regPassword" name="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="regConfirmPassword">Confirm Password</label>
+                    <input type="password" id="regConfirmPassword" name="confirmPassword" required>
+                </div>
+                <button type="submit" class="btn">Register</button>
+                <p style="text-align: center; margin-top: 1rem;">
+                    Already have an account? <a href="#" class="nav-link" data-page="login">Login here</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Page Navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            // Switch between pages
+            const navLinks = document.querySelectorAll('.nav-link');
+            const pages = document.querySelectorAll('.page');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const pageId = this.getAttribute('data-page');
+                    
+                    // Hide all pages
+                    pages.forEach(page => {
+                        page.classList.remove('active');
+                    });
+                    
+                    // Show selected page
+                    document.getElementById(pageId).classList.add('active');
+                    
+                    // Scroll to top
+                    window.scrollTo(0, 0);
+                });
+            });
+            
+            // Form submissions
+            document.getElementById('contactForm')?.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your message! We will get back to you soon.');
+                this.reset();
+            });
+            
+            document.getElementById('loginForm')?.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Login functionality would be implemented here.');
+                this.reset();
+            });
+            
+            document.getElementById('registerForm')?.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Registration functionality would be implemented here.');
+                this.reset();
+            });
+            
+            // Scroll animations
+            setupScrollAnimations();
+        });
+        
+        // Scroll Animations
+        function setupScrollAnimations() {
+            const animateOnScroll = () => {
+                const cards = document.querySelectorAll('.about-card, .product-card');
+                const windowHeight = window.innerHeight;
+                
+                cards.forEach(card => {
+                    const cardPosition = card.getBoundingClientRect().top;
+                    if (cardPosition < windowHeight - 100) {
+                        card.classList.add('visible');
+                    }
+                });
+            };
+            
+            // Run once on load
+            animateOnScroll();
+            
+            // Run on scroll
+            window.addEventListener('scroll', animateOnScroll);
+        }
+    </script>
 </body>
 </html>
