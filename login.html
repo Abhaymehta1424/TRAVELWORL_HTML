@@ -3,183 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | PowerFit</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
-        body {
-            background-color: #f5f5f5;
-            color: #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-        nav {
-            background-color: #222;
-            color: white;
-            padding: 1rem 2rem;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-        }
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #ff5500;
-        }
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-        .nav-links li {
-            margin-left: 2rem;
-        }
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        .nav-links a:hover {
-            color: #ff5500;
-        }
-        .auth-container {
-            background: white;
-            padding: 3rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 400px;
-            margin-top: 4rem;
-        }
-        .auth-container h2 {
-            text-align: center;
-            margin-bottom: 2rem;
-            color: #ff5500;
-            font-size: 2rem;
-        }
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-        }
-        .form-group input {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-        }
-        .btn {
-            width: 100%;
-            background-color: #ff5500;
-            color: white;
-            padding: 0.8rem;
-            border: none;
-            border-radius: 5px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            margin-top: 1rem;
-        }
-        .btn:hover {
-            background-color: #e04b00;
-        }
-        .auth-footer {
-            text-align: center;
-            margin-top: 1.5rem;
-        }
-        .auth-footer a {
-            color: #ff5500;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .auth-footer a:hover {
-            text-decoration: underline;
-        }
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            .auth-container {
-                margin: 4rem 1rem 1rem;
-                padding: 2rem;
-            }
-        }
-    </style>
+    <title>Login - Gym Power</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <nav>
-        <div class="logo">PowerFit</div>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="explore.html">Explore</a></li>
-            <li><a href="accessories.html">Accessories</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="login.html" class="active">Login</a></li>
-            <li><a href="register.html">Register</a></li>
-        </ul>
-    </nav>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>GYM<span>POWER</span></h1>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="accessories.html">Accessories</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="auth-buttons">
+                    <a href="login.html" class="btn btn-outline active">Login</a>
+                    <a href="register.html" class="btn btn-primary">Register</a>
+                </div>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
 
-    <div class="auth-container">
-        <h2>Login to Your Account</h2>
-        <form id="loginForm">
-            <div class="form-group">
-                <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" required>
+    <section class="auth-section">
+        <div class="container">
+            <div class="auth-container" data-aos="fade-up">
+                <div class="auth-image">
+                    <img src="images/login-image.jpg" alt="Gym workout">
+                </div>
+                <div class="auth-form">
+                    <h2>Welcome Back!</h2>
+                    <p>Login to access your account and continue your fitness journey.</p>
+                    
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <div class="input-icon">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <div class="input-icon">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="password" name="password" required>
+                                <i class="fas fa-eye toggle-password"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="form-options">
+                            <div class="remember-me">
+                                <input type="checkbox" id="remember" name="remember">
+                                <label for="remember">Remember me</label>
+                            </div>
+                            <a href="#" class="forgot-password">Forgot Password?</a>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-block">Login</button>
+                    </form>
+                    
+                    <div class="social-login">
+                        <p>Or login with</p>
+                        <div class="social-buttons">
+                            <button class="social-btn google">
+                                <i class="fab fa-google"></i>
+                                <span>Google</span>
+                            </button>
+                            <button class="social-btn facebook">
+                                <i class="fab fa-facebook-f"></i>
+                                <span>Facebook</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="auth-footer">
+                        <p>Don't have an account? <a href="register.html">Register Now</a></p>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <button type="submit" class="btn">Login</button>
-            <div class="auth-footer">
-                Don't have an account? <a href="register.html">Register here</a>
-            </div>
-            <div class="auth-footer">
-                <a href="#">Forgot password?</a>
-            </div>
-        </form>
-    </div>
+        </div>
+    </section>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Set active nav link
-            const currentPage = window.location.pathname.split('/').pop();
-            document.querySelectorAll('.nav-links a').forEach(link => {
-                if (link.getAttribute('href') === currentPage) {
-                    link.classList.add('active');
-                }
-            });
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>GYM<span>POWER</span></h2>
+                    <p>Your fitness journey starts here.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="accessories.html">Accessories</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Fitness Street, Gym City</p>
+                    <p><i class="fas fa-phone"></i> (123) 456-7890</p>
+                    <p><i class="fas fa-envelope"></i> info@gympower.com</p>
+                </div>
+                <div class="footer-social">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 GymPower. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
 
-            // Form submission
-            document.getElementById('loginForm').addEventListener('submit', function(e) {
-                e.preventDefault();
-                const email = document.getElementById('email').value;
-                const password = document.getElementById('password').value;
-                
-                // Simple validation
-                if (email && password) {
-                    alert('Login successful! Redirecting to your dashboard...');
-                    // In a real app, you would handle authentication here
-                } else {
-                    alert('Please fill in all fields');
-                }
-            });
-        });
-    </script>
+    <script src="js/script.js"></script>
+    <script src="js/animations.js"></script>
 </body>
 </html>

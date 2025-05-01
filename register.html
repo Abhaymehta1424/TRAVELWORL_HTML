@@ -3,243 +3,170 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register | PowerFit</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
-        body {
-            background-color: #f5f5f5;
-            color: #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-        nav {
-            background-color: #222;
-            color: white;
-            padding: 1rem 2rem;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-        }
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #ff5500;
-        }
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-        .nav-links li {
-            margin-left: 2rem;
-        }
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        .nav-links a:hover {
-            color: #ff5500;
-        }
-        .auth-container {
-            background: white;
-            padding: 3rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 400px;
-            margin-top: 4rem;
-        }
-        .auth-container h2 {
-            text-align: center;
-            margin-bottom: 2rem;
-            color: #ff5500;
-            font-size: 2rem;
-        }
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-        }
-        .form-group input {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-        }
-        .btn {
-            width: 100%;
-            background-color: #ff5500;
-            color: white;
-            padding: 0.8rem;
-            border: none;
-            border-radius: 5px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            margin-top: 1rem;
-        }
-        .btn:hover {
-            background-color: #e04b00;
-        }
-        .auth-footer {
-            text-align: center;
-            margin-top: 1.5rem;
-        }
-        .auth-footer a {
-            color: #ff5500;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .auth-footer a:hover {
-            text-decoration: underline;
-        }
-        .password-strength {
-            height: 5px;
-            background: #eee;
-            margin-top: 5px;
-            border-radius: 5px;
-            overflow: hidden;
-        }
-        .strength-meter {
-            height: 100%;
-            width: 0;
-            background: red;
-            transition: all 0.3s;
-        }
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            .auth-container {
-                margin: 4rem 1rem 1rem;
-                padding: 2rem;
-            }
-        }
-    </style>
+    <title>Register - Gym Power</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <nav>
-        <div class="logo">PowerFit</div>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="explore.html">Explore</a></li>
-            <li><a href="accessories.html">Accessories</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="login.html">Login</a></li>
-            <li><a href="register.html" class="active">Register</a></li>
-        </ul>
-    </nav>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>GYM<span>POWER</span></h1>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="accessories.html">Accessories</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="auth-buttons">
+                    <a href="login.html" class="btn btn-outline">Login</a>
+                    <a href="register.html" class="btn btn-primary active">Register</a>
+                </div>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
 
-    <div class="auth-container">
-        <h2>Create Your Account</h2>
-        <form id="registerForm">
-            <div class="form-group">
-                <label for="name">Full Name</label>
-                <input type="text" id="name" name="name" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" required>
-                <div class="password-strength">
-                    <div class="strength-meter" id="strengthMeter"></div>
+    <section class="auth-section">
+        <div class="container">
+            <div class="auth-container" data-aos="fade-up">
+                <div class="auth-image">
+                    <img src="images/register-image.jpg" alt="Gym workout">
+                </div>
+                <div class="auth-form">
+                    <h2>Create an Account</h2>
+                    <p>Join our fitness community and start your journey to a healthier you!</p>
+                    
+                    <form id="registerForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name</label>
+                                <div class="input-icon">
+                                    <i class="fas fa-user"></i>
+                                    <input type="text" id="firstName" name="firstName" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="lastName">Last Name</label>
+                                <div class="input-icon">
+                                    <i class="fas fa-user"></i>
+                                    <input type="text" id="lastName" name="lastName" required>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <div class="input-icon">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <div class="input-icon">
+                                <i class="fas fa-phone"></i>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <div class="input-icon">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="password" name="password" required>
+                                <i class="fas fa-eye toggle-password"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm Password</label>
+                            <div class="input-icon">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="confirmPassword" name="confirmPassword" required>
+                                <i class="fas fa-eye toggle-password"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="form-options">
+                            <div class="remember-me">
+                                <input type="checkbox" id="terms" name="terms" required>
+                                <label for="terms">I agree to the <a href="#">Terms & Conditions</a></label>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+                    </form>
+                    
+                    <div class="social-login">
+                        <p>Or register with</p>
+                        <div class="social-buttons">
+                            <button class="social-btn google">
+                                <i class="fab fa-google"></i>
+                                <span>Google</span>
+                            </button>
+                            <button class="social-btn facebook">
+                                <i class="fab fa-facebook-f"></i>
+                                <span>Facebook</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="auth-footer">
+                        <p>Already have an account? <a href="login.html">Login</a></p>
+                    </div>
                 </div>
             </div>
-            <div class="form-group">
-                <label for="confirmPassword">Confirm Password</label>
-                <input type="password" id="confirmPassword" name="confirmPassword" required>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>GYM<span>POWER</span></h2>
+                    <p>Your fitness journey starts here.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="accessories.html">Accessories</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Fitness Street, Gym City</p>
+                    <p><i class="fas fa-phone"></i> (123) 456-7890</p>
+                    <p><i class="fas fa-envelope"></i> info@gympower.com</p>
+                </div>
+                <div class="footer-social">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
             </div>
-            <button type="submit" class="btn">Register</button>
-            <div class="auth-footer">
-                Already have an account? <a href="login.html">Login here</a>
+            <div class="footer-bottom">
+                <p>&copy; 2023 GymPower. All Rights Reserved.</p>
             </div>
-        </form>
-    </div>
+        </div>
+    </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Set active nav link
-            const currentPage = window.location.pathname.split('/').pop();
-            document.querySelectorAll('.nav-links a').forEach(link => {
-                if (link.getAttribute('href') === currentPage) {
-                    link.classList.add('active');
-                }
-            });
-
-            // Password strength meter
-            const passwordInput = document.getElementById('password');
-            const strengthMeter = document.getElementById('strengthMeter');
-            
-            passwordInput.addEventListener('input', function() {
-                const password = this.value;
-                let strength = 0;
-                
-                // Check length
-                if (password.length >= 8) strength += 1;
-                if (password.length >= 12) strength += 1;
-                
-                // Check for numbers
-                if (/\d/.test(password)) strength += 1;
-                
-                // Check for special characters
-                if (/[!@#$%^&*(),.?":{}|<>]/.test(password)) strength += 1;
-                
-                // Check for uppercase and lowercase
-                if (/[a-z]/.test(password) && /[A-Z]/.test(password)) strength += 1;
-                
-                // Update meter
-                let width = strength * 20;
-                let color = 'red';
-                
-                if (strength >= 4) color = 'green';
-                else if (strength >= 2) color = 'orange';
-                
-                strengthMeter.style.width = `${width}%`;
-                strengthMeter.style.background = color;
-            });
-
-            // Form submission
-            document.getElementById('registerForm').addEventListener('submit', function(e) {
-                e.preventDefault();
-                const name = document.getElementById('name').value;
-                const email = document.getElementById('email').value;
-                const password = document.getElementById('password').value;
-                const confirmPassword = document.getElementById('confirmPassword').value;
-                
-                // Simple validation
-                if (password !== confirmPassword) {
-                    alert('Passwords do not match!');
-                    return;
-                }
-                
-                if (name && email && password) {
-                    alert('Registration successful! Welcome to PowerFit Gym.');
-                    // In a real app, you would handle registration here
-                } else {
-                    alert('Please fill in all fields');
-                }
-            });
-        });
-    </script>
+    <script src="js/script.js"></script>
+    <script src="js/animations.js"></script>
 </body>
 </html>

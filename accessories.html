@@ -3,273 +3,322 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gym Accessories | PowerFit</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
-        body {
-            background-color: #f5f5f5;
-            color: #333;
-        }
-        nav {
-            background-color: #222;
-            color: white;
-            padding: 1rem 2rem;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-        }
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #ff5500;
-        }
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-        .nav-links li {
-            margin-left: 2rem;
-        }
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        .nav-links a:hover {
-            color: #ff5500;
-        }
-        .container {
-            padding: 6rem 2rem 2rem;
-            min-height: 100vh;
-        }
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background-color: #ff5500;
-        }
-        .products {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 2rem;
-            padding: 2rem;
-        }
-        .product-card {
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            transition: all 0.3s;
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        .product-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-        }
-        .product-img {
-            height: 200px;
-            overflow: hidden;
-        }
-        .product-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-        .product-card:hover .product-img img {
-            transform: scale(1.1);
-        }
-        .product-info {
-            padding: 1.5rem;
-        }
-        .product-info h3 {
-            margin-bottom: 0.5rem;
-            color: #ff5500;
-        }
-        .product-info p {
-            margin-bottom: 1rem;
-            color: #666;
-        }
-        .product-price {
-            font-weight: bold;
-            font-size: 1.2rem;
-            color: #222;
-        }
-        .btn {
-            display: inline-block;
-            background-color: #ff5500;
-            color: white;
-            padding: 0.5rem 1rem;
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s;
-            cursor: pointer;
-            margin-top: 0.5rem;
-        }
-        .btn:hover {
-            background-color: #e04b00;
-        }
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            .products {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <title>Fitness Accessories - Gym Power</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <nav>
-        <div class="logo">PowerFit</div>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="explore.html">Explore</a></li>
-            <li><a href="accessories.html" class="active">Accessories</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="login.html">Login</a></li>
-            <li><a href="register.html">Register</a></li>
-        </ul>
-    </nav>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>GYM<span>POWER</span></h1>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="accessories.html" class="active">Accessories</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="auth-buttons">
+                    <a href="login.html" class="btn btn-outline">Login</a>
+                    <a href="register.html" class="btn btn-primary">Register</a>
+                </div>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
 
-    <div class="container">
-        <h2 class="section-title">Gym Accessories</h2>
-        
-        <div class="products">
-            <div class="product-card">
-                <div class="product-img">
-                    <img src="https://via.placeholder.com/300x200" alt="Dumbbells">
+    <section class="page-banner">
+        <div class="container">
+            <h1>Fitness Accessories</h1>
+            <p>Enhance your workout with our premium fitness accessories</p>
+        </div>
+    </section>
+
+    <section class="accessories-section">
+        <div class="container">
+            <div class="filter-container">
+                <div class="search-bar">
+                    <input type="text" id="searchAccessories" placeholder="Search accessories...">
+                    <button><i class="fas fa-search"></i></button>
                 </div>
-                <div class="product-info">
-                    <h3>Professional Dumbbells</h3>
-                    <p>Set of 2 with rubber coating</p>
-                    <div class="product-price">$49.99</div>
-                    <button class="btn">Add to Cart</button>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-img">
-                    <img src="https://via.placeholder.com/300x200" alt="Yoga Mat">
-                </div>
-                <div class="product-info">
-                    <h3>Premium Yoga Mat</h3>
-                    <p>6mm thick, non-slip</p>
-                    <div class="product-price">$29.99</div>
-                    <button class="btn">Add to Cart</button>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-img">
-                    <img src="https://via.placeholder.com/300x200" alt="Protein Shaker">
-                </div>
-                <div class="product-info">
-                    <h3>Protein Shaker Bottle</h3>
-                    <p>700ml capacity with mixer ball</p>
-                    <div class="product-price">$12.99</div>
-                    <button class="btn">Add to Cart</button>
+                <div class="filter-options">
+                    <select id="categoryFilter">
+                        <option value="all">All Categories</option>
+                        <option value="weights">Weights</option>
+                        <option value="cardio">Cardio</option>
+                        <option value="recovery">Recovery</option>
+                        <option value="apparel">Apparel</option>
+                    </select>
+                    <select id="priceFilter">
+                        <option value="all">All Prices</option>
+                        <option value="low">$0 - $25</option>
+                        <option value="medium">$25 - $50</option>
+                        <option value="high">$50+</option>
+                    </select>
+                    <button id="filterButton" class="btn btn-secondary">Filter</button>
                 </div>
             </div>
-            <div class="product-card">
-                <div class="product-img">
-                    <img src="https://via.placeholder.com/300x200" alt="Resistance Bands">
+
+            <div class="accessories-grid">
+                <!-- Product Card 1 -->
+                <div class="product-card" data-aos="fade-up" data-category="weights" data-price="medium">
+                    <div class="product-badge">New</div>
+                    <div class="product-image">
+                        <img src="gym1.jpeg" alt="Adjustable Dumbbells">
+                    </div>
+                    <div class="product-content">
+                        <h3>Adjustable Dumbbells</h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>(4.5)</span>
+                        </div>
+                        <p class="product-description">Versatile adjustable dumbbells perfect for home workouts.</p>
+                        <div class="product-price">
+                            <span class="current-price">$49.99</span>
+                            <span class="old-price">$59.99</span>
+                        </div>
+                        <button class="btn btn-primary add-to-cart">Add to Cart</button>
+                    </div>
                 </div>
-                <div class="product-info">
-                    <h3>Resistance Bands Set</h3>
-                    <p>5 bands with handles</p>
-                    <div class="product-price">$24.99</div>
-                    <button class="btn">Add to Cart</button>
+
+                <!-- Product Card 2 -->
+                <div class="product-card" data-aos="fade-up" data-aos-delay="100" data-category="cardio" data-price="high">
+                    <div class="product-image">
+                        <img src="gym2.jpeg" alt="Jump Rope">
+                    </div>
+                    <div class="product-content">
+                        <h3>Premium Jump Rope</h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(5.0)</span>
+                        </div>
+                        <p class="product-description">Professional-grade jump rope with adjustable length and ball bearings.</p>
+                        <div class="product-price">
+                            <span class="current-price">$24.99</span>
+                        </div>
+                        <button class="btn btn-primary add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Product Card 3 -->
+                <div class="product-card" data-aos="fade-up" data-aos-delay="200" data-category="recovery" data-price="medium">
+                    <div class="product-badge">Sale</div>
+                    <div class="product-image">
+                        <img src="gym3.jpeg" alt="Foam Roller">
+                    </div>
+                    <div class="product-content">
+                        <h3>Foam Roller</h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span>(4.0)</span>
+                        </div>
+                        <p class="product-description">High-density foam roller for muscle recovery and myofascial release.</p>
+                        <div class="product-price">
+                            <span class="current-price">$29.99</span>
+                            <span class="old-price">$39.99</span>
+                        </div>
+                        <button class="btn btn-primary add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Product Card 4 -->
+                <div class="product-card" data-aos="fade-up" data-aos-delay="300" data-category="weights" data-price="high">
+                    <div class="product-image">
+                        <img src="gym4.jpeg" alt="Kettlebell">
+                    </div>
+                    <div class="product-content">
+                        <h3>Cast Iron Kettlebell</h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>(4.7)</span>
+                        </div>
+                        <p class="product-description">Premium cast iron kettlebell with comfortable grip for versatile workouts.</p>
+                        <div class="product-price">
+                            <span class="current-price">$59.99</span>
+                        </div>
+                        <button class="btn btn-primary add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Product Card 5 -->
+                <div class="product-card" data-aos="fade-up" data-category="apparel" data-price="low">
+                    <div class="product-image">
+                        <img src="gym5.jpeg" alt="Workout Gloves">
+                    </div>
+                    <div class="product-content">
+                        <h3>Workout Gloves</h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <i class="far fa-star"></i>
+                            <span>(3.5)</span>
+                        </div>
+                        <p class="product-description">Breathable workout gloves with wrist support for weightlifting.</p>
+                        <div class="product-price">
+                            <span class="current-price">$19.99</span>
+                        </div>
+                        <button class="btn btn-primary add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Product Card 6 -->
+                <div class="product-card" data-aos="fade-up" data-aos-delay="100" data-category="recovery" data-price="medium">
+                    <div class="product-image">
+                        <img src="gym6.jpeg" alt="Massage Gun">
+                    </div>
+                    <div class="product-content">
+                        <h3>Percussion Massage Gun</h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(4.9)</span>
+                        </div>
+                        <p class="product-description">Deep tissue massage gun with multiple attachments for muscle recovery.</p>
+                        <div class="product-price">
+                            <span class="current-price">$89.99</span>
+                            <span class="old-price">$119.99</span>
+                        </div>
+                        <button class="btn btn-primary add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Product Card 7 -->
+                <div class="product-card" data-aos="fade-up" data-aos-delay="200" data-category="cardio" data-price="low">
+                    <div class="product-badge">Best Seller</div>
+                    <div class="product-image">
+                        <img src="gym7.jpeg" alt="Resistance Bands">
+                    </div>
+                    <div class="product-content">
+                        <h3>Resistance Bands Set</h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>(4.6)</span>
+                        </div>
+                        <p class="product-description">Set of 5 resistance bands with different resistance levels for versatile workouts.</p>
+                        <div class="product-price">
+                            <span class="current-price">$24.99</span>
+                            <span class="old-price">$34.99</span>
+                        </div>
+                        <button class="btn btn-primary add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Product Card 8 -->
+                <div class="product-card" data-aos="fade-up" data-aos-delay="300" data-category="apparel" data-price="medium">
+                    <div class="product-image">
+                        <img src="gym8.jpeg" alt="Gym Bag">
+                    </div>
+                    <div class="product-content">
+                        <h3>Durable Gym Bag</h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span>(4.0)</span>
+                        </div>
+                        <p class="product-description">Spacious gym bag with multiple compartments for all your fitness essentials.</p>
+                        <div class="product-price">
+                            <span class="current-price">$39.99</span>
+                        </div>
+                        <button class="btn btn-primary add-to-cart">Add to Cart</button>
+                    </div>
                 </div>
             </div>
-            <div class="product-card">
-                <div class="product-img">
-                    <img src="https://via.placeholder.com/300x200" alt="Gym Gloves">
-                </div>
-                <div class="product-info">
-                    <h3>Weight Lifting Gloves</h3>
-                    <p>Padded palms, breathable</p>
-                    <div class="product-price">$19.99</div>
-                    <button class="btn">Add to Cart</button>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-img">
-                    <img src="https://via.placeholder.com/300x200" alt="Foam Roller">
-                </div>
-                <div class="product-info">
-                    <h3>High-Density Foam Roller</h3>
-                    <p>45cm long, for muscle recovery</p>
-                    <div class="product-price">$34.99</div>
-                    <button class="btn">Add to Cart</button>
-                </div>
+
+            <div class="pagination">
+                <button class="pagination-btn active">1</button>
+                <button class="pagination-btn">2</button>
+                <button class="pagination-btn">3</button>
+                <button class="pagination-btn next"><i class="fas fa-chevron-right"></i></button>
             </div>
         </div>
-    </div>
+    </section>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Set active nav link
-            const currentPage = window.location.pathname.split('/').pop();
-            document.querySelectorAll('.nav-links a').forEach(link => {
-                if (link.getAttribute('href') === currentPage) {
-                    link.classList.add('active');
-                }
-            });
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Subscribe to Our Newsletter</h2>
+                <p>Get the latest updates on new products, special offers, and fitness tips!</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email address" required>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
 
-            // Scroll animation for product cards
-            const animateOnScroll = () => {
-                const cards = document.querySelectorAll('.product-card');
-                const windowHeight = window.innerHeight;
-                
-                cards.forEach((card, index) => {
-                    const cardPosition = card.getBoundingClientRect().top;
-                    if (cardPosition < windowHeight - 100) {
-                        setTimeout(() => {
-                            card.classList.add('visible');
-                        }, index * 100);
-                    }
-                });
-            };
-            
-            // Run on load and scroll
-            animateOnScroll();
-            window.addEventListener('scroll', animateOnScroll);
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>GYM<span>POWER</span></h2>
+                    <p>Your fitness journey starts here.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="accessories.html">Accessories</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Fitness Street, Gym City</p>
+                    <p><i class="fas fa-phone"></i> (123) 456-7890</p>
+                    <p><i class="fas fa-envelope"></i> info@gympower.com</p>
+                </div>
+                <div class="footer-social">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 GymPower. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
 
-            // Add to cart functionality
-            document.querySelectorAll('.btn').forEach(button => {
-                button.addEventListener('click', function() {
-                    const productName = this.parentElement.querySelector('h3').textContent;
-                    alert(`${productName} added to cart!`);
-                });
-            });
-        });
-    </script>
+    <script src="js/script.js"></script>
+    <script src="js/animations.js"></script>
 </body>
 </html>
