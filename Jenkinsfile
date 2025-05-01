@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "abhay202001/travel-website"
+        IMAGE_NAME = "abhay202001/gym"
         DOCKER_CREDENTIALS_ID = "docker-hub-credentials"
     }
 
@@ -23,9 +23,9 @@ pipeline {
         stage('Run Docker Container') {
         steps {
                 script {
-                    sh 'docker rm -f travel-container || true'
+                    sh 'docker rm -f gym || true'
 
-                    sh 'docker run -d --name travel-container -p 80:80 abhay202001/travel-website:latest'
+                    sh 'docker run -d --name gym -p 80:80 abhay202001/gym:latest'
                 }
             }
         }
@@ -35,7 +35,7 @@ pipeline {
                 script {
                     withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
                         sh 'echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin'
-                        sh 'docker push abhay202001/travel-website:latest'
+                        sh 'docker push abhay202001/gym:latest'
                     }
                 }
             }

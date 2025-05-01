@@ -7,4 +7,4 @@ services:
       - "8081:80"
     volumes:
       - .:/usr/share/nginx/html
-    container_name: travel_website_container
+    container_name: gym
